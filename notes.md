@@ -59,3 +59,7 @@ Services communicate with each other using direct request, not necessary http re
 Sercices communicate with each other using events.
 
 **Event-based communication:**
+Two ways to async communication:
+
+- **First Way**
+- **Second Way (better)**
