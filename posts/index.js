@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 // this object is where we're going to store every post
-const posts = {};
+ const posts = {};
 
 app.get('/posts', (req, res) => {
   res.send(posts);
