@@ -8,7 +8,7 @@ export default () => {
     event.preventDefault();
 
     // request to out posts service
-    await axios.post('http://localhost:4000', { title });
+    await axios.post('http://localhost:4000/posts', { title });
 
     // UX on input cleaning title value
     setTitle('');
