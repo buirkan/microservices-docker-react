@@ -20,14 +20,24 @@ app.post('/events', (req, res) => {
   if (type === "PostCreated") {
     const { id, title } = data;
 
+    // default empty array of comments on creation event of a post
     posts[id] = { id, title, comments: [] };
   }
 
   if (type === "CommentCreated") {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
     const post = post[postId];
 
-    post.comments.push({ id, content });
+    post.comments.push({ id, content, status });
+  }
+
+  if (type === "CommentUpdated") {
+    const { id, content, postId, status } = data;
+    const post = posts[postId];
+    const comment = post.comments.find(comment => comment.id === id);
+
+    comment.status = status;
+    comment.content = content;
   }
 
   console.log(posts);
@@ -35,6 +45,4 @@ app.post('/events', (req, res) => {
   res.send({});
 });
 
-app.listen(4002, () => {
-  console.log('Listening on 4002');
-});
+app.listen(4002, () => console.log('Listening on 4002'));

@@ -14,10 +14,10 @@ app.post('/events', (req, res) => {
   axios.post('http://localhost:4001/events', event);
   // query service
   axios.post('http://localhost:4002/events', event);
+  // moderation service
+  axios.post('http://localhost:4003/events', event);
 
   res.send({ status: 'OK' });
 });
 
-app.listen(4005, () => {
-  console.log('Event bus is listening on 4005');
-});
+app.listen(4005, () => console.log('Event bus is listening on 4005'));
