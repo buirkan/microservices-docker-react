@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // this object is where we're going to store every post
- const posts = {};
+const posts = {};
 
 app.get('/posts', (req, res) => {
   res.send(posts);
@@ -41,8 +41,8 @@ app.post('/posts', async (req, res) => {
 
 app.post('/events', (req, res) => {
   console.log(`Received event: ${req.body.type}`);
-  
-  res.send({ status: 'Event received OK'});
+
+  res.send({ status: 'Event received OK' });
 });
 
 app.listen(4000, () => console.log('Listening on 4000'));
